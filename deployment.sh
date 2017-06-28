@@ -4,7 +4,7 @@ echo "### Updating base system"
 apt-get update -q
 aptitude -q -y full-upgrade
 
-APT_INST_ORG='aptitude install'
+APT_INST_ORG='aptitude install -y'
 APT_INSTALL='apt-get install -q -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"'
 
 echo "### Installing Apache, PHP, git and generic PHP modules"
