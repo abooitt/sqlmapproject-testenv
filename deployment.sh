@@ -50,7 +50,7 @@ EOF
 
 echo "### Initializing MySQL test database and table"
 mysql mysql < $DOCROOT/sqlmap/schema/mysql.sql
-sed -i 's/^bind-address *= *127.0.0.1/bind-address            = 0.0.0.0/g' /etc/mysql/my.cnf
+sed -i 's/^bind-address\s*=\s*127.0.0.1/bind-address            = 0.0.0.0/g' /etc/mysql/my.cnf
 sed -i 's/^key_buffer *=/key_buffer_size =/' /etc/mysql/my.cnf
 service mysql restart
 
