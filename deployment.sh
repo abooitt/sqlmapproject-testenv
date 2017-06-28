@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
 echo "### Updating base system"
-aptitude update
-aptitude full-upgrade
+#export DEBIAN_FRONTEND=noninteractive
+apt-get update -q
+aptitude -q -y full-upgrade
+
+APT_INST_ORG='aptitude install'
+APT_INSTALL='apt-get install -q -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"'
 
 echo "### Installing Apache, PHP, git and generic PHP modules"
-aptitude install apache2 libapache2-mod-php5 git php5-dev php5-gd php-pear php5-mysql php5-pgsql php5-sqlite php5-interbase php5-sybase php5-odbc libmdbodbc1 unzip make libaio1 bc screen htop git subversion sqlite sqlite3
+$APT_INST_ORG apache2 libapache2-mod-php5 git php5-dev php5-gd php-pear php5-mysql php5-pgsql php5-sqlite php5-interbase php5-sybase php5-odbc libmdbodbc1 unzip make libaio1 bc screen htop git subversion sqlite sqlite3
+
+exit 0
 
 echo "### Configuring Apache and PHP"
 rm /var/www/index.html
